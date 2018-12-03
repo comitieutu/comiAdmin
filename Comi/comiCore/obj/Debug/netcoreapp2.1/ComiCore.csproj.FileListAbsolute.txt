@@ -1,0 +1,16 @@
+D:\admin\Comi\comiCore\bin\Debug\netcoreapp2.1\ComiCore.deps.json
+D:\admin\Comi\comiCore\bin\Debug\netcoreapp2.1\ComiCore.dll
+D:\admin\Comi\comiCore\bin\Debug\netcoreapp2.1\ComiCore.pdb
+D:\admin\Comi\comiCore\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\admin\Comi\comiCore\bin\Debug\netcoreapp2.1\Microsoft.EntityFrameworkCore.dll
+D:\admin\Comi\comiCore\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Identity.Stores.dll
+D:\admin\Comi\comiCore\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
+D:\admin\Comi\comiCore\bin\Debug\netcoreapp2.1\Microsoft.EntityFrameworkCore.xml
+D:\admin\Comi\comiCore\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Identity.Stores.xml
+D:\admin\Comi\comiCore\obj\Debug\netcoreapp2.1\ComiCore.csprojAssemblyReference.cache
+D:\admin\Comi\comiCore\obj\Debug\netcoreapp2.1\ComiCore.csproj.CoreCompileInputs.cache
+D:\admin\Comi\comiCore\obj\Debug\netcoreapp2.1\ComiCore.AssemblyInfoInputs.cache
+D:\admin\Comi\comiCore\obj\Debug\netcoreapp2.1\ComiCore.AssemblyInfo.cs
+D:\admin\Comi\comiCore\obj\Debug\netcoreapp2.1\ComiCore.csproj.CopyComplete
+D:\admin\Comi\comiCore\obj\Debug\netcoreapp2.1\ComiCore.dll
+D:\admin\Comi\comiCore\obj\Debug\netcoreapp2.1\ComiCore.pdb
