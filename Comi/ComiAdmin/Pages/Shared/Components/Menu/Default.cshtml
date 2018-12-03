@@ -1,0 +1,16 @@
+﻿@model IList<Category>
+@{
+    var categorys = (List<Category>)Model.Where(c => c.Deleted == false).ToList();
+}
+@foreach (var item in categorys.Where(c => c.Parent == 0))
+{
+    <div class="col-md-6 col-lg-3">
+        <h5>@item.CategoryName</h5>
+        @foreach (var i in categorys.Where(category => category.Parent == item.Id))
+        {
+            <ul class="list-unstyled mb-3">
+                <li class="nav-item"><a asp-page="/ProductList" asp-route-id="@i.Id" class="nav-link">@i.CategoryName</a></li>
+            </ul>
+        }
+    </div>
+}
