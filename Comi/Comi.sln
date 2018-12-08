@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComiAdmin", "ComiAdmin\ComiAdmin.csproj", "{896AD73A-8F40-4857-9218-81F45AD4D246}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComiCore", "comiCore\ComiCore.csproj", "{31CB6058-6499-4551-B4B4-6913B3ABCB10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComiCore", "comiCore\ComiCore.csproj", "{31CB6058-6499-4551-B4B4-6913B3ABCB10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComiService", "ComiService\ComiService.csproj", "{FBA28A31-F9A1-4C32-9569-A5054BBE045E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComiService", "ComiService\ComiService.csproj", "{FBA28A31-F9A1-4C32-9569-A5054BBE045E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComiAdminn", "ComiAdminn\ComiAdminn.csproj", "{AC912573-837D-4E7A-B8C3-183CB9A71D4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComiWeb", "ComiWeb\ComiWeb.csproj", "{2BBDC6A5-4D67-4700-8A93-04E55CB2473B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{896AD73A-8F40-4857-9218-81F45AD4D246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{896AD73A-8F40-4857-9218-81F45AD4D246}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{896AD73A-8F40-4857-9218-81F45AD4D246}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{896AD73A-8F40-4857-9218-81F45AD4D246}.Release|Any CPU.Build.0 = Release|Any CPU
 		{31CB6058-6499-4551-B4B4-6913B3ABCB10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{31CB6058-6499-4551-B4B4-6913B3ABCB10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31CB6058-6499-4551-B4B4-6913B3ABCB10}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +25,14 @@ Global
 		{FBA28A31-F9A1-4C32-9569-A5054BBE045E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBA28A31-F9A1-4C32-9569-A5054BBE045E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBA28A31-F9A1-4C32-9569-A5054BBE045E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC912573-837D-4E7A-B8C3-183CB9A71D4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC912573-837D-4E7A-B8C3-183CB9A71D4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC912573-837D-4E7A-B8C3-183CB9A71D4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC912573-837D-4E7A-B8C3-183CB9A71D4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BBDC6A5-4D67-4700-8A93-04E55CB2473B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BBDC6A5-4D67-4700-8A93-04E55CB2473B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BBDC6A5-4D67-4700-8A93-04E55CB2473B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BBDC6A5-4D67-4700-8A93-04E55CB2473B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
