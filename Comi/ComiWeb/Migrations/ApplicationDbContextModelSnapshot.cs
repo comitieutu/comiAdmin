@@ -100,35 +100,6 @@ namespace ComiWeb.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("ComiCore.Model.Brand", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Country");
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<bool>("Deleted");
-
-                    b.Property<string>("Headquarters");
-
-                    b.Property<string>("Logo");
-
-                    b.Property<DateTime>("ModifiedDate");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("ProductId");
-
-                    b.Property<Guid>("UniqueId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Brands");
-                });
-
             modelBuilder.Entity("ComiCore.Model.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -290,6 +261,8 @@ namespace ComiWeb.Migrations
 
                     b.Property<bool>("Deleted");
 
+                    b.Property<string>("Description");
+
                     b.Property<DateTime>("ModifiedDate");
 
                     b.Property<string>("Name");
@@ -373,13 +346,15 @@ namespace ComiWeb.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BrandId");
+                    b.Property<string>("Brand");
 
                     b.Property<int>("CategoryId");
 
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<bool>("Deleted");
+
+                    b.Property<string>("DesDetail");
 
                     b.Property<int?>("FlashSaleProductId");
 
@@ -397,8 +372,6 @@ namespace ComiWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BrandId");
-
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("FlashSaleProductId");
@@ -415,8 +388,6 @@ namespace ComiWeb.Migrations
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<bool>("Deleted");
-
-                    b.Property<string>("DesDetail");
 
                     b.Property<DateTime>("ModifiedDate");
 
@@ -752,11 +723,6 @@ namespace ComiWeb.Migrations
 
             modelBuilder.Entity("ComiCore.Model.Product", b =>
                 {
-                    b.HasOne("ComiCore.Model.Brand", "Brand")
-                        .WithMany("Products")
-                        .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("ComiCore.Model.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")

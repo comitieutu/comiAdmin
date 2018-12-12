@@ -17,12 +17,24 @@ namespace ComiService.Implementations
         private IRepository<SaleOrderDetail> _saleOrderDetailRepository;
         private IRepository<Shipper> _shipperRepository;
         private IRepository<Comment> _commentRepository;
+        private IRepository<Payment> _paymentRepository;
+        private IRepository<Package> _packageRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
         }
-
+        public IRepository<Package> PackageRepository
+        {
+            get
+            {
+                if (_packageRepository == null)
+                {
+                    _packageRepository = new Repository<Package>(_context);
+                }
+                return _packageRepository;
+            }
+        }
         public IRepository<Product> ProductRepository
         {
             get
@@ -127,6 +139,17 @@ namespace ComiService.Implementations
                     _commentRepository = new Repository<Comment>(_context);
                 }
                 return _commentRepository;
+            }
+        }
+        public IRepository<Payment> PaymentRepository
+        {
+            get
+            {
+                if (_paymentRepository == null)
+                {
+                    _paymentRepository = new Repository<Payment>(_context);
+                }
+                return _paymentRepository;
             }
         }
 

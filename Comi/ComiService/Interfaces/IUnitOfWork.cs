@@ -13,6 +13,8 @@ namespace ComiService.Interfaces
         IRepository<SaleOrderDetail> SaleOrderDetailRepository { get; }
         IRepository<Shipper> ShipperRepository { get; }
         IRepository<Comment> CommentRepository { get; }
+        IRepository<Payment> PaymentRepository { get; }
+        IRepository<Package> PackageRepository { get; }
         void Refresh();
         void Commit();
     }
