@@ -96,7 +96,7 @@ using ComiCore.Model;
             WriteLiteral("            <ul class=\"list-unstyled mb-3\">\r\n                <li class=\"nav-item\">");
             EndContext();
             BeginContext(430, 84, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ca7c2481a3c64d3abea7f3d6bc62efa7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e413d8d5aa1d4963ba9a187e8f8a06c1", async() => {
                 BeginContext(496, 14, false);
 #line 12 "D:\admin\Comi\ComiWeb\Pages\Shared\Components\Menu\Default.cshtml"
                                                                                                  Write(i.CategoryName);

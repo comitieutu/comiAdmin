@@ -88,7 +88,7 @@ using ComiCore.Model;
                         ");
             EndContext();
             BeginContext(768, 3284, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f5ef1b1d415e4edeac7bed42127314f2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5f38611c30b6410f80ae310c9db4251d", async() => {
                 BeginContext(811, 3234, true);
                 WriteLiteral(@"
                             <h1>Checkout - Payment method</h1>

@@ -13,6 +13,9 @@ using ComiAdminn.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ComiCore;
+using ComiService.Interfaces;
+using ComiService.Implementations;
+using AutoMapper;
 
 namespace ComiAdminn
 {
@@ -41,6 +44,17 @@ namespace ComiAdminn
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            Mapper.Initialize(cfg => {
+                cfg.AddProfile<ComiProfile>();
+            });
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new ComiProfile());
+            });
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -65,7 +79,15 @@ namespace ComiAdminn
 
             app.UseAuthentication();
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                     name: "areaRoute",
+                     template: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Book}/{action=Index}/{id?}");
+            });
         }
     }
 }
