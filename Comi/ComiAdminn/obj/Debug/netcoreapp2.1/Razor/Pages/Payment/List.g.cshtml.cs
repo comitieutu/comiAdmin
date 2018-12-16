@@ -114,7 +114,7 @@ using ComiAdminn.Data;
             WriteLiteral("</td>\r\n                            <td>\r\n                                ");
             EndContext();
             BeginContext(996, 112, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "790b8c23879e4329b3389d80aaca2c98", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b119b592b2f2459ca5547d76bfea5a94", async() => {
                 BeginContext(1076, 28, true);
                 WriteLiteral("<i class=\"fa fa-pencil\"></i>");
                 EndContext();
@@ -150,7 +150,7 @@ using ComiAdminn.Data;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(1142, 139, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ecf64988e6ae417eb7ed07c8da41f48d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd1d931ca65446bd83a4b481706e6c26", async() => {
                 BeginContext(1247, 30, true);
                 WriteLiteral("<i class=\"fa fa-trash-o \"></i>");
                 EndContext();

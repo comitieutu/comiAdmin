@@ -1,15 +1,15 @@
-﻿@page
+﻿@page 
 @model DetailModel
 @{
     ViewData["Title"] = "ProductDetail";
 }
 
-<h3><i class="fa fa-angle-right"></i> Product detail</h3>
+<h3><a asp-page="./List">All product </a><i class="fa fa-angle-right"></i> Product detail</h3>
 <div class="row mt">
     <div class="col-md-12">
         <div class="content-panel">
             <table class="table table-striped table-advance table-hover">
-                <h4><i class="fa fa-angle-right"></i>Product detail</h4>
+                <a asp-page="./NewPhoto" asp-route-id="@Model.ProductDetails.FirstOrDefault().ProductId" class="btn btn-round btn-primary">New photo</a>
                 <hr>
                 <thead>
                     <tr>
@@ -23,10 +23,10 @@
                     {
                         <tr>
                             <td><a>@p.Name</a></td>
-                            <td> <img src="~/img/@p.ProductImage" /> </td>
+                            <td> <img src="~/img/@p.ProductImage" height="200" width="200" /> </td>
                             <td>
-                                <a asp-page="/Product/EditPhoto" asp-route-id="@p.Id" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                                <a asp-page="/Product/Detail" asp-page-handler="Delete" asp-route-id="@p.Id" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                                <a asp-page="./EditPhoto" asp-route-id="@p.Id" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                <a asp-page="./Detail" asp-page-handler="Delete" asp-route-id="@p.Id" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
                             </td>
                         </tr>
                     }

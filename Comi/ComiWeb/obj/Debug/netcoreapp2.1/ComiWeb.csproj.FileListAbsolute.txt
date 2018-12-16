@@ -7,7 +7,6 @@ D:\admin\Comi\ComiWeb\bin\Debug\netcoreapp2.1\ComiWeb.Views.dll
 D:\admin\Comi\ComiWeb\bin\Debug\netcoreapp2.1\ComiWeb.Views.pdb
 D:\admin\Comi\ComiWeb\bin\Debug\netcoreapp2.1\ComiCore.dll
 D:\admin\Comi\ComiWeb\bin\Debug\netcoreapp2.1\ComiCore.pdb
-D:\admin\Comi\ComiWeb\obj\Debug\netcoreapp2.1\ComiWeb.csprojAssemblyReference.cache
 D:\admin\Comi\ComiWeb\obj\Debug\netcoreapp2.1\ComiWeb.csproj.CoreCompileInputs.cache
 D:\admin\Comi\ComiWeb\obj\Debug\netcoreapp2.1\ComiWeb.RazorAssemblyInfo.cache
 D:\admin\Comi\ComiWeb\obj\Debug\netcoreapp2.1\ComiWeb.RazorAssemblyInfo.cs

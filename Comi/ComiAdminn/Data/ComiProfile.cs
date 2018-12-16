@@ -34,15 +34,14 @@ namespace ComiAdminn.Data
             CreateMap<EditPayment, Payment>();
             //package
             CreateMap<Package, PackageModel>();
-            CreateMap<CreatePackageModel, Payment>();
+            CreateMap<CreatePackageModel, Package>();
             CreateMap<EditPackage, Package>();
             //product & productdetail
             CreateMap<Product, ProductModel>();
             CreateMap<CreateProduct, Product>();
             CreateMap<CreateProduct, ProductDetail>();
-            CreateMap<EditProduct, Product>();
+            CreateMap<EditProduct, Product>().ReverseMap();
             CreateMap<ProductDetail, ProductDetailModel>();
-            CreateMap<EditPhotoProduct, ProductDetail>();
         }
     }
 }

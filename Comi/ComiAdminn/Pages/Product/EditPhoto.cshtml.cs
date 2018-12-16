@@ -25,17 +25,11 @@ namespace ComiAdminn.Pages.Product
             _hostingEnv = hostingEnv;
         }
         [BindProperty]
-        public EditPhotoProduct InputModel { get; set; }
-        [BindProperty]
         public IFormFile FilePhoto{ get; set; }
-        public class EditPhotoProduct
-        {
-            public int Id { get; set; }
-            public string ProductImage { get; set; }
-        }
+        public int Id { get; set; }
         public void OnGet(int id)
         {
-            InputModel = _mapper.Map<EditPhotoProduct>(_unitOfWork.ProductDetailRepository.Get(id));
+            Id = id;
         }
         public async Task<IActionResult> OnPostAsync()
         {
@@ -54,7 +48,7 @@ namespace ComiAdminn.Pages.Product
                     {
                         await FilePhoto.CopyToAsync(stream);
                     }
-                    var productDetail = _unitOfWork.ProductDetailRepository.Get(InputModel.Id);
+                    var productDetail = _unitOfWork.ProductDetailRepository.Get(Id);
                     productDetail.ProductImage = fileName;
                     _unitOfWork.ProductDetailRepository.Edit(productDetail);
                     _unitOfWork.Commit();

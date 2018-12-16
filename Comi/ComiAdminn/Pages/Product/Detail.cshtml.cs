@@ -24,6 +24,7 @@ namespace ComiAdminn.Pages.Product
         public class ProductDetailModel
         {
             public int Id { get; set; }
+            public int ProductId { get; set; }
             public string Name { get; set; }
             public string ProductImage { get; set; }
         }

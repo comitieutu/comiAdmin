@@ -88,7 +88,7 @@ using ComiCore.Model;
                         ");
             EndContext();
             BeginContext(752, 3704, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0f702f9e3537451aaeec87f01ede06ff", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a0c076ce4ef34eae89031e6f6fcf4930", async() => {
                 BeginContext(796, 3653, true);
                 WriteLiteral(@"
                             <h1>Shopping cart</h1>
@@ -266,7 +266,7 @@ using ComiCore.Model;
                         ");
             EndContext();
             BeginContext(9860, 447, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d09f3457178450db29838ac86d96dd0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "12a59e3eada6454195ac465132989925", async() => {
                 BeginContext(9866, 434, true);
                 WriteLiteral(@"
                             <div class=""input-group"">

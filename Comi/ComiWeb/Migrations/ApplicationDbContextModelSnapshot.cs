@@ -213,6 +213,8 @@ namespace ComiWeb.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int>("Sale");
+
                     b.Property<DateTime>("StartDate");
 
                     b.Property<Guid>("UniqueId");
@@ -234,15 +236,11 @@ namespace ComiWeb.Migrations
 
                     b.Property<bool>("Deleted");
 
-                    b.Property<string>("Description");
-
                     b.Property<int>("FlashSaleId");
 
                     b.Property<DateTime>("ModifiedDate");
 
                     b.Property<int>("ProductId");
-
-                    b.Property<int>("Sale");
 
                     b.Property<Guid>("UniqueId");
 

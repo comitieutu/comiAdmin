@@ -224,7 +224,7 @@ using ComiAdminn.Data;
                             ");
             EndContext();
             BeginContext(7063, 390, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e4dc122337374f8ca326a86dea64e119", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1f0b6efac8884a9890950575fe205090", async() => {
                 BeginContext(7101, 345, true);
                 WriteLiteral(@"
                                 <div class=""form-group"">

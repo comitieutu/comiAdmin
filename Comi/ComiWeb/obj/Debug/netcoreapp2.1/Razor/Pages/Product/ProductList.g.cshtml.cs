@@ -128,7 +128,7 @@ using ComiCore.Model;
                             ");
             EndContext();
             BeginContext(3824, 1419, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "61f4423bbda7430c98db089021cd0e17", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4a8fc17d2a554b68a37d602810965f19", async() => {
                 BeginContext(3830, 1406, true);
                 WriteLiteral(@"
                                 <div class=""form-group"">
@@ -183,7 +183,7 @@ using ComiCore.Model;
                             ");
             EndContext();
             BeginContext(5689, 1853, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aaea6776107048f8b7b95b7f9e286d8e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae74ea9717844b50ad1f39da08b24981", async() => {
                 BeginContext(5695, 1840, true);
                 WriteLiteral(@"
                                 <div class=""form-group"">
@@ -250,7 +250,7 @@ using ComiCore.Model;
                                 ");
             EndContext();
             BeginContext(8460, 953, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "98f4475a93834052a4f08f946e2a7731", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3f318f26332646c89bf6854ece2a273a", async() => {
                 BeginContext(8552, 562, true);
                 WriteLiteral(@"
                                     <div class=""products-number""><strong>Show</strong><a href=""#"" class=""btn btn-sm btn-primary"">12</a><a href=""#"" class=""btn btn-outline-secondary btn-sm"">24</a><a href=""#"" class=""btn btn-outline-secondary btn-sm"">All</a><span>products</span></div>
@@ -260,7 +260,7 @@ using ComiCore.Model;
                                             ");
                 EndContext();
                 BeginContext(9114, 22, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e8f58be9e8b049c6ad8f2425c7dd7535", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "15de74d78afd4d10aad31346b3ba1ace", async() => {
                     BeginContext(9122, 5, true);
                     WriteLiteral("Price");
                     EndContext();
@@ -280,7 +280,7 @@ using ComiCore.Model;
                 WriteLiteral("\r\n                                            ");
                 EndContext();
                 BeginContext(9182, 21, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4db9d88466ce452c933caeb94df164dd", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8717dc4d5ab94acc9946870ce7f3b092", async() => {
                     BeginContext(9190, 4, true);
                     WriteLiteral("Name");
                     EndContext();
@@ -300,7 +300,7 @@ using ComiCore.Model;
                 WriteLiteral("\r\n                                            ");
                 EndContext();
                 BeginContext(9249, 28, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f423c20516b74d6189833b6a20af85ec", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e6132fa27f3049ba97247690ba3eec3a", async() => {
                     BeginContext(9257, 11, true);
                     WriteLiteral("Sales first");
                     EndContext();

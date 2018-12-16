@@ -56,3 +56,6 @@ D:\admin\Comi\ComiAdminn\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 D:\admin\Comi\ComiAdminn\obj\Debug\netcoreapp2.1\Razor\Pages\Payment\Create.g.cshtml.cs
 D:\admin\Comi\ComiAdminn\obj\Debug\netcoreapp2.1\Razor\Pages\Category\Detail.g.cshtml.cs
 D:\admin\Comi\ComiAdminn\obj\Debug\netcoreapp2.1\Razor\Pages\Product\EditPhoto.g.cshtml.cs
+D:\admin\Comi\ComiAdminn\obj\Debug\netcoreapp2.1\Razor\Pages\Product\NewPhoto.g.cshtml.cs
+D:\admin\Comi\ComiAdminn\obj\Debug\netcoreapp2.1\Razor\Pages\FlashSale\List.g.cshtml.cs
+D:\admin\Comi\ComiAdminn\obj\Debug\netcoreapp2.1\Razor\Pages\FlashSale\Create.g.cshtml.cs

@@ -135,7 +135,7 @@ using ComiCore.Model;
                             ");
             EndContext();
             BeginContext(4051, 1419, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c11ae89964b448929be7a57344da44da", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6673f6c17a0c477590ce74e884420fb8", async() => {
                 BeginContext(4057, 1406, true);
                 WriteLiteral(@"
                                 <div class=""form-group"">
@@ -190,7 +190,7 @@ using ComiCore.Model;
                             ");
             EndContext();
             BeginContext(5916, 1853, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "261b4bcc63294af5b834a6aa1a1a884d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8360dc00ab7144619ad730b288ab875d", async() => {
                 BeginContext(5922, 1840, true);
                 WriteLiteral(@"
                                 <div class=""form-group"">
