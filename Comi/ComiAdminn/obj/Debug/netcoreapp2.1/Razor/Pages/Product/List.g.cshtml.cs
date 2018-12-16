@@ -101,7 +101,7 @@ using ComiAdminn.Data;
             WriteLiteral("                        <tr>\r\n                            <td>\r\n                                ");
             EndContext();
             BeginContext(1252, 69, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cb6c39473f8747b5913e6ea764faeb8c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "53434a8fb91645ca805729de203afe44", async() => {
                 BeginContext(1304, 13, false);
 #line 31 "D:\admin\Comi\ComiAdminn\Pages\Product\List.cshtml"
                                                                               Write(p.ProductName);
@@ -160,7 +160,7 @@ using ComiAdminn.Data;
             WriteLiteral("</td>\r\n                            <td>\r\n                                ");
             EndContext();
             BeginContext(1527, 89, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8e7bc75c295e4420921e707284e32c7f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1479ca008e3d4183b8247cc84d403c27", async() => {
                 BeginContext(1589, 23, false);
 #line 36 "D:\admin\Comi\ComiAdminn\Pages\Product\List.cshtml"
                                                                                         Write(p.Category.CategoryName);
@@ -229,7 +229,7 @@ using ComiAdminn.Data;
             WriteLiteral("</td>\r\n                            <td>\r\n                                ");
             EndContext();
             BeginContext(1938, 112, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b582206df4e4f7bae5c22cf3f049bce", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "00cbcaf28ab841ff8fc98cdf79e8f53d", async() => {
                 BeginContext(2018, 28, true);
                 WriteLiteral("<i class=\"fa fa-pencil\"></i>");
                 EndContext();
@@ -265,7 +265,7 @@ using ComiAdminn.Data;
             WriteLiteral("\r\n                                ");
             EndContext();
             BeginContext(2084, 139, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9afedb3cecf74f29a206b30414d68e22", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9dd93742ae2143e2ae3f4d0ee221436d", async() => {
                 BeginContext(2189, 30, true);
                 WriteLiteral("<i class=\"fa fa-trash-o \"></i>");
                 EndContext();

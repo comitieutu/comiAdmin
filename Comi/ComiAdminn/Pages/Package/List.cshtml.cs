@@ -34,7 +34,7 @@ namespace ComiAdminn.Pages.Package
         }
         public IActionResult OnGetDelete(int id)
         {
-            _unitOfWork.CategoryRepository.Delete(id);
+            _unitOfWork.PackageRepository.Delete(id);
             _unitOfWork.Commit();
             return RedirectToPage("./List");
         }
