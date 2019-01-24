@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 
 namespace ComiAdminn.Pages.Product
 {
@@ -17,12 +18,14 @@ namespace ComiAdminn.Pages.Product
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment _hostingEnv;
+        private readonly IConfiguration _configuration;
 
-        public NewPhotoModel(IUnitOfWork unitOfWork, IMapper mapper, IHostingEnvironment hostingEnv)
+        public NewPhotoModel(IUnitOfWork unitOfWork, IMapper mapper, IHostingEnvironment hostingEnv, IConfiguration configuration)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _hostingEnv = hostingEnv;
+            _configuration = configuration;
         }
         [BindProperty]
         public List<IFormFile> Files { get; set; }
@@ -41,7 +44,8 @@ namespace ComiAdminn.Pages.Product
 
             try
             {
-                var filePath = _hostingEnv.WebRootPath + "\\img";
+                //var filePath = _hostingEnv.WebRootPath + "\\img";
+                var filePath = _configuration["Image"];
                 var flag = false;
                 foreach (var formFile in Files)
                 {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 
 namespace ComiCore
 {
@@ -16,6 +17,13 @@ namespace ComiCore
         }
 
         public string Description { get; set; }
-
+        public virtual ICollection<ApplicationUserRole> UserRoles { get; set; }
+    }
+    public enum Role
+    {
+        SuperAdmin = 1,
+        Manager = 2,
+        Vendor = 3,
+        Customer = 4
     }
 }

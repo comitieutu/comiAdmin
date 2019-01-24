@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 
 namespace ComiAdminn.Pages.Product
 {
@@ -17,12 +18,14 @@ namespace ComiAdminn.Pages.Product
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment _hostingEnv;
+        private readonly IConfiguration _configuration;
 
-        public EditPhotoModel(IUnitOfWork unitOfWork, IMapper mapper, IHostingEnvironment hostingEnv)
+        public EditPhotoModel(IUnitOfWork unitOfWork, IMapper mapper, IHostingEnvironment hostingEnv, IConfiguration configuration)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _hostingEnv = hostingEnv;
+            _configuration = configuration;
         }
         [BindProperty]
         public IFormFile FilePhoto{ get; set; }
@@ -40,7 +43,8 @@ namespace ComiAdminn.Pages.Product
 
             try
             {
-                var filePath = _hostingEnv.WebRootPath + "\\img";
+                //var filePath = _hostingEnv.WebRootPath + "\\img";
+                var filePath = _configuration["Image"];
                 var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(FilePhoto.FileName);
                 if (FilePhoto.Length > 0)
                 {

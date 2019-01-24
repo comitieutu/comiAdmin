@@ -12,5 +12,6 @@ namespace ComiCore.Model
         public string Description { get; set; }
         public int Sale { get; set; }
         public string Image { get; set; }
+        public virtual ICollection<FlashSaleProduct> FlashSaleProducts { get; set; }
     }
 }

@@ -1,13 +1,14 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    "signature": "ffe22bbd3d3cfcd1dc27969fc2373f45fb86e414"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.1": {
       "ComiCore/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.1.1.0",
           "Microsoft.EntityFrameworkCore": "2.1.1.0",
           "Microsoft.Extensions.Identity.Stores": "2.1.1.0"
@@ -16,6 +17,7 @@
           "ComiCore.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Razor.Design/2.2.0": {},
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore/2.1.1.0": {
         "runtime": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {
@@ -47,6 +49,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.AspNetCore.Razor.Design/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qslnmDEaFHn7ok+xWsqq4YwdKuVIBUV1PAym3OdfXXmMAyI034d5QWPloGDz/i2K2iK3BcFn4qDoBX+xEBAfAg==",
+      "path": "microsoft.aspnetcore.razor.design/2.2.0",
+      "hashPath": "microsoft.aspnetcore.razor.design.2.2.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore/2.1.1.0": {
       "type": "reference",

@@ -1,0 +1,40 @@
+﻿@page
+@model ListModel
+@{
+    ViewData["Title"] = "List";
+}
+
+<h3><i class="fa fa-angle-right"></i> All shipper</h3>
+<div class="row mt">
+    <div class="col-md-12">
+        <div class="content-panel">
+            <table class="table table-striped table-advance table-hover">
+                <h4><i class="fa fa-angle-right"></i>All shipper</h4>
+                <hr>
+                <thead>
+                    <tr>
+                        <th><i class="fa fa-bullhorn"></i> Name</th>
+                        <th class="hidden-phone"><i class="fa fa-question-circle"></i> Company</th>
+                        <th><i class="fa fa-windows"></i> Phone</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var s in Model.ShipperModels)
+                    {
+                        <tr>
+                            <td>@s.ContactName</td>
+                            <td>@s.ContactName</td>
+                            <td>@s.ContactPhone</td>
+                            <td>
+                                <a asp-page="/Shipper/Edit" asp-route-id="@s.Id" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                <a asp-page="/Shipper/List" asp-route-id="@s.Id" asp-page-handler="Delete" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

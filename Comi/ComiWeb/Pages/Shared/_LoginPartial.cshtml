@@ -6,6 +6,22 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
+    if (User.IsInRole(Enum.GetName(typeof(Role), 4)) && !User.IsInRole(Enum.GetName(typeof(Role), 3)))
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a asp-page="/Contract/Register">Register vendor</a>
+            </li>
+        </ul>
+    }
+    if (User.IsInRole(Enum.GetName(typeof(Role), 3)))
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a asp-page="/Contract/Register">Manager vendor</a>
+            </li>
+        </ul>
+    }
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>

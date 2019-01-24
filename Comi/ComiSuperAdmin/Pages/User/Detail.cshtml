@@ -1,0 +1,34 @@
+﻿@page
+@model DetailModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h3><i class="fa fa-angle-right"></i> Person information</h3>
+<div class="row mt">
+    <div class="col-md-12">
+        <div class="content-panel">
+            <table class="table table-striped table-advance table-hover">
+                <h4><i class="fa fa-angle-right"></i>Person information</h4>
+                <hr>
+                <thead>
+                    <tr>
+                        <th><i class="fa fa-align-justify"></i> Name</th>
+                        <th><i class="fa fa-align-justify"></i> Gender</th>
+                        <th><i class="fa fa-align-justify"></i> Birthday</th>
+                        <th><i class="fa fa-bullhorn"></i> Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.PersonInfo.FullName</td>
+                        <td>@Model.PersonInfo.Gender</td>
+                        <td>@Model.PersonInfo.Birthday</td>
+                        <td>@Model.PersonInfo.Address</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -1,79 +1,4 @@
-﻿@*<!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - ComiAdmin</title>
-
-        <environment include="Development">
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-            <link rel="stylesheet" href="~/css/site.css" />
-        </environment>
-        <environment exclude="Development">
-            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        </environment>
-    </head>
-    <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-page="/Index" class="navbar-brand">ComiAdmin</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-page="/Index">Home</a></li>
-                        <li><a asp-page="/About">About</a></li>
-                        <li><a asp-page="/Contact">Contact</a></li>
-                    </ul>
-                    <partial name="_LoginPartial" />
-                </div>
-            </div>
-        </nav>
-
-        <partial name="_CookieConsentPartial" />
-
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; 2018 - ComiAdmin</p>
-            </footer>
-        </div>
-
-        <environment include="Development">
-            <script src="~/lib/jquery/dist/jquery.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-            <script src="~/js/site.js" asp-append-version="true"></script>
-        </environment>
-        <environment exclude="Development">
-            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                    asp-fallback-test="window.jQuery"
-                    crossorigin="anonymous"
-                    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-            </script>
-            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                    crossorigin="anonymous"
-                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-            </script>
-            <script src="~/js/site.min.js" asp-append-version="true"></script>
-        </environment>
-
-        @RenderSection("Scripts", required: false)
-    </body>
-    </html>*@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -82,25 +7,15 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="~/vendor/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="~/vendor/font-awesome/css/font-awesome.min.css">
-    <!-- Google fonts - Roboto -->
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100">
-    <!-- owl carousel-->
     <link rel="stylesheet" href="~/vendor/owl.carousel/assets/owl.carousel.css">
     <link rel="stylesheet" href="~/vendor/owl.carousel/assets/owl.theme.default.css">
-    <!-- theme stylesheet-->
     <link rel="stylesheet" href="~/css/style.default.css" id="theme-stylesheet">
-    <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="~/css/custom.css">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="favicon.png">
-    <!-- Tweaks for older IEs-->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 </head>
 <body>
     <header class="header mb-5">
@@ -109,48 +24,14 @@
                 <div class="row">
                     <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">Offer of the day</a><a href="#" class="ml-1">Get flat 35% off on orders over $50!</a></div>
                     <div class="col-lg-6 text-center text-lg-right">
-                        @*<ul class="menu list-inline mb-0">
-                                <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
-                                <li class="list-inline-item"><a href="register.html">Register</a></li>
-                                <li class="list-inline-item"><a href="contact.html">Contact</a></li>
-                                <li class="list-inline-item"><a href="#">Recently viewed</a></li>
-                            </ul>*@
                         <partial name="_LoginPartial" />
                     </div>
                 </div>
             </div>
-            <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Customer login</h5>
-                            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="customer-orders.html" method="post">
-                                <div class="form-group">
-                                    <input id="email-modal" type="text" placeholder="email" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <input id="password-modal" type="password" placeholder="password" class="form-control">
-                                </div>
-                                <p class="text-center">
-                                    <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
-                                </p>
-                            </form>
-                            <p class="text-center text-muted">Not registered yet?</p>
-                            <p class="text-center text-muted"><a href="register.html"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- *** TOP BAR END ***-->
-
-
         </div>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a href="index.html" class="navbar-brand home"><img src="img/logo.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="img/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
+                <a asp-page="/Index" class="navbar-brand home"><span class="sr-only">Comi - go to homepage</span></a>
                 <div class="navbar-buttons">
                     <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                     <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.html" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
@@ -170,33 +51,59 @@
                         </li>
                     </ul>
                     <div class="navbar-buttons d-flex justify-content-end">
-                        <!-- /.nav-collapse-->
-                        <div id="search-not-mobile" class="navbar-collapse collapse"></div><a data-toggle="collapse" href="#search" class="btn navbar-btn btn-primary d-none d-lg-inline-block"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></a>
-                        <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block"><a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span>3 items in cart</span></a></div>
+                        <div id="search-not-mobile" class="navbar-collapse collapse"></div>
+                        <a data-toggle="collapse" href="#search" class="btn navbar-btn btn-primary d-none d-lg-inline-block"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></a>
+                        <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block">
+                            <a asp-page="/Cart/ShoppingCart" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span>View cart</span></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </nav>
         <div id="search" class="collapse">
             <div class="container">
-                <form role="search" class="ml-auto">
+                <form asp-page="/Product/List" role="search" class="ml-auto" method="get">
                     <div class="input-group">
-                        <input type="text" placeholder="Search" class="form-control">
+                        <input name="SearchString" id="autocomplete" type="text" placeholder="Search" class="form-control">
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
+        <script>
+            $(document).ready(() => {
+                $(() => {
+                    $("#autocomplete").keydown(alert("ok"))
+                    $("#autocomplete").autocomplete({
+                        source: (request, response) => {
+                            $.ajax({
+                                url: @Url.Content("/Product/List?handler=Auto"),
+                                data: request,
+                                dataType: "json",
+                                type: "GET",
+                                contentType: "application/json; charset=utf-8",
+                                success: function (data) {
+                                    response($.map(data, function (item) {
+                                            alert(item);
+                                            return { value: item }
+                                        }))
+                                },
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    alert(textStatus);
+                                }
+                            })
+                        },
+                        minLength: 1
+                    })
+                })
+            })
+        </script>
     </header>
 
     @RenderBody()
 
-    <!--
-    *** FOOTER ***
-    _________________________________________________________
-    -->
     <div id="footer">
         <div class="container">
             <div class="row">
@@ -274,14 +181,16 @@
             </div>
         </div>
     </div>
-
+    
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
     <script src="~/vendor/jquery/jquery.min.js"></script>
     <script src="~/vendor/popper.js/umd/popper.min.js"></script>
     <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/vendor/jquery.cookie/jquery.cookie.js"></script>
     <script src="~/vendor/owl.carousel/owl.carousel.min.js"></script>
     <script src="~/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="~/js/front.js"></script>
     @RenderSection("Scripts", required: false)
 </body>

@@ -1,0 +1,59 @@
+﻿@page
+@model OrderDetailModel
+@{
+}
+<div class="box">
+    <h1>Order #1735</h1>
+    <p class="lead">Order #1735 was placed on <strong>22/06/2013</strong> and is currently <strong>Being prepared</strong>.</p>
+    <p class="text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center is working for you 24/7.</p>
+    <hr>
+    <div class="table-responsive mb-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th colspan="2">Product</th>
+                    <th>Quantity</th>
+                    <th>Unit price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Model.SaleOrder.SaleOrderDetails)
+                {
+                    <tr>
+                        <td><a asp-page="/Product/Detail" asp-route-id="@i.Product.Id"><img src="~/img/@i.Product.ProductDetails.FirstOrDefault().ProductImage" width="80" height="80"></a></td>
+                        <td><a asp-page="/Product/Detail" asp-route-id="@i.Product.Id">@i.Product.ProductName</a></td>
+                        <td>@i.Quantity</td>
+                        <td>$@i.UnitPrice</td>
+                        <td>$@(i.Quantity * i.UnitPrice)</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="4" class="text-right">Order subtotal</th>
+                    <th>$@Model.SaleOrder.SaleOrderDetails.Sum(s => (s.UnitPrice * s.Quantity))</th>
+                </tr>
+                <tr>
+                    <th colspan="4" class="text-right">Shipping and handling</th>
+                    <th>$@Model.SaleOrder.DeliveryPrice</th>
+                </tr>
+                <tr>
+                    <th colspan="4" class="text-right">Total</th>
+                    <th>$@Model.SaleOrder.TotalPrice</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.table-responsive-->
+    <div class="row addresses">
+        @*<div class="col-lg-6">
+            <h2>Invoice address</h2>
+            <p>John Brown<br>13/25 New Avenue<br>New Heaven<br>45Y 73J<br>England<br>Great Britain</p>
+        </div>*@
+        <div class="col-lg-6">
+            <h2>Shipping address</h2>
+            <p>@Model.SaleOrder.ReceiveProduct.ShipToAddress</p>
+        </div>
+    </div>
+</div>

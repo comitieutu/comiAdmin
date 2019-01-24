@@ -8,7 +8,7 @@ namespace ComiCore.Model
     {
         public int ProductId { get; set; }
         public int FlashSaleId { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
-        public virtual ICollection<FlashSale> FlashSales { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual FlashSale FlashSale { get; set; }
     }
 }

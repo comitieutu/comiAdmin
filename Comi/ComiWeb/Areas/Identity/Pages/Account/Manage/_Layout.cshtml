@@ -1,18 +1,31 @@
 ﻿@{ 
-    Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    Layout = "/Pages/Shared/_Layout.cshtml";
 }
 
-<h2>Manage your account</h2>
-
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-3">
-            <partial name="_ManageNav" />
-        </div>
-        <div class="col-md-9">
-            @RenderBody()
+<div id="all">
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a asp-page="/Index">Home</a></li>
+                            <li aria-current="page" class="breadcrumb-item active">My account</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card sidebar-menu">
+                        <div class="card-header">
+                            <h3 class="h4 card-title">Customer section</h3>
+                        </div>
+                        <partial name="_ManageNav" />
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    @RenderBody()
+                </div>
+            </div>
         </div>
     </div>
 </div>

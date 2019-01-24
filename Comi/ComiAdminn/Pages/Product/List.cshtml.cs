@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using ComiCore;
 using ComiService.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -13,11 +15,13 @@ namespace ComiAdminn.Pages.Product
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ListModel(IUnitOfWork unitOfWork, IMapper mapper)
+        public ListModel(IUnitOfWork unitOfWork, IMapper mapper, UserManager<ApplicationUser> userManager)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _userManager = userManager;
         }
         public IList<ProductModel> ProductModels { get; set; }
         public class ProductModel
@@ -33,7 +37,7 @@ namespace ComiAdminn.Pages.Product
         }
         public void OnGet()
         {
-            var products = _unitOfWork.ProductRepository.GetAll().Where(p => p.Deleted == false)
+            var products = _unitOfWork.ProductRepository.GetAll().Where(p => p.UserId == _userManager.GetUserId(User))
                 .Select(p => new ComiCore.Model.Product {
                     Id = p.Id,
                     ProductName = p.ProductName,

@@ -33,14 +33,13 @@ namespace ComiService.Implementations
 
         public IQueryable<T> GetAll()
         {
-            return Entities;
+            return Entities.AsNoTracking();
         }
 
         public void Create(T entity)
         {
             _context.Entry(entity).State = EntityState.Added;
         }
-
         public void Delete(params object[] keyValues)
         {
             var entity = Get(keyValues);
@@ -62,7 +61,9 @@ namespace ComiService.Implementations
 
         private void DeleteEntity(T entity)
         {
-            _context.Entry(entity).State = EntityState.Deleted;
+            //_context.Entry(entity).State = EntityState.Deleted;
+            entity.Deleted = true;
+            Edit(entity);
         }
         public T GetByUId(Guid keyValue)
         {

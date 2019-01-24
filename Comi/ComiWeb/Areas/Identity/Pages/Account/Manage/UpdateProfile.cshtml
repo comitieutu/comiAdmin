@@ -1,0 +1,92 @@
+﻿@page
+@model UpdateProfileModel
+
+<div class="box">
+    <h1>My account</h1>
+    <h3 class="mt-5">Personal details</h3>
+    <form method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PersonInfo.FirstName">Firstname</label>
+                    <input asp-for="PersonInfo.FirstName" id="firstname" type="text" class="form-control">
+                    <span asp-validation-for="PersonInfo.FirstName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PersonInfo.LastName">Lastname</label>
+                    <input asp-for="PersonInfo.LastName" type="text" class="form-control">
+                    <span asp-validation-for="PersonInfo.LastName" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PersonInfo.Birthday">Birthday</label>
+                    <input asp-for="PersonInfo.Birthday" class="form-control">
+                    <span asp-validation-for="PersonInfo.Birthday" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PersonInfo.Gender">Gender</label>
+                    <select asp-for="PersonInfo.Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-control"></select>
+                    <span asp-validation-for="PersonInfo.Gender" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-3">
+                <div class="form-group">
+                    <label asp-for="PersonInfo.Address">Address</label>
+                    <input asp-for="PersonInfo.Address" type="text" class="form-control">
+                    <span asp-validation-for="PersonInfo.Address" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="form-group">
+                    <label asp-for="PersonInfo.District.StateOrProvince.Country.Id">Country</label>
+                    <select asp-for="PersonInfo.District.StateOrProvince.Country.Id" asp-items="@Model.Countries" id="country" class="form-control"></select>
+                    <span asp-validation-for="PersonInfo.District.StateOrProvince.Country.Id" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="form-group">
+                    <label asp-for="PersonInfo.District.StateOrProvince.Id">State or Province</label>
+                    <select asp-for="PersonInfo.District.StateOrProvince.Id" asp-items="@Model.StateOrProvinces" id="city" class="form-control"></select>
+                    <span asp-validation-for="PersonInfo.District.StateOrProvince.Id" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="form-group">
+                    <label asp-for="PersonInfo.DistrictId">District</label>
+                    <select asp-for="PersonInfo.DistrictId" asp-items="@Model.Districts" id="district" class="form-control"></select>
+                    <span asp-validation-for="PersonInfo.DistrictId" class="text-danger"></span>
+                </div>
+            </div>
+            @*<div class="col-md-6">
+                    <div class="form-group">
+                        <label for="phone">Telephone</label>
+                        <input id="phone" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" type="text" class="form-control">
+                    </div>
+                </div>*@
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save changes</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+}

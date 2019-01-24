@@ -1,5 +1,6 @@
 ﻿namespace ComiCore.Model
 {
+
     public class Comment : BaseEntity
     {
         public string UserId { get; set; }
