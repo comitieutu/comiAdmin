@@ -16,6 +16,9 @@ using ComiCore;
 using ComiService.Interfaces;
 using ComiService.Implementations;
 using AutoMapper;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace ComiAdminn
 {
@@ -41,8 +44,10 @@ namespace ComiAdminn
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<ApplicationUser>().AddRoles<ApplicationRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddAuthentication();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -56,7 +61,20 @@ namespace ComiAdminn
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                                 .RequireAuthenticatedUser()
+                                 .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            }).AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AuthorizePage("/Contact");
+                options.Conventions.AuthorizeFolder("/Private");
+                options.Conventions.AllowAnonymousToPage("/Private/PublicPage");
+                options.Conventions.AllowAnonymousToFolder("/Private/PublicPages");
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,19 +93,16 @@ namespace ComiAdminn
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseFileServer(new FileServerOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Configuration["Image"]),
+                RequestPath = new PathString("/img"),
+                EnableDirectoryBrowsing = false
+            });
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                     name: "areaRoute",
-                     template: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Book}/{action=Index}/{id?}");
-            });
+            app.UseMvc();
         }
     }
 }

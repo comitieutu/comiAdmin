@@ -1,28 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using ComiCore;
+using ComiService.Common;
 using ComiService.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ComiAdminn.Pages.Product
 {
-    public class EditModel : PageModel
+    public class EditModel : CategoryPageModel
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public EditModel(IUnitOfWork unitOfWork, IMapper mapper)
+        public EditModel(IUnitOfWork unitOfWork, IMapper mapper, ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _context = context;
+            _userManager = userManager;
         }
         [BindProperty]
         public EditProduct InputModel { get; set; }
-        public List<SelectListItem> Categories { get; set; }
         public class EditProduct
         {
             public int Id { get; set; }
@@ -39,11 +41,9 @@ namespace ComiAdminn.Pages.Product
         {
             InputModel = _mapper.Map<EditProduct>(_unitOfWork.ProductRepository.Get(id));
 
-            var cates = _unitOfWork.CategoryRepository.GetAll().Where(c => c.Parent != 0 && c.Deleted == false).ToList();
-            Categories = new List<SelectListItem>();
-            cates.ForEach(c => Categories.Add(new SelectListItem { Value = c.Id.ToString(), Text = c.CategoryName }));
+            CategoryDropDownList(_context, id);
         }
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
@@ -51,6 +51,7 @@ namespace ComiAdminn.Pages.Product
             }
             var product = _mapper.Map<ComiCore.Model.Product>(InputModel);
             product.ModifiedDate = DateTime.Now;
+            product.User = await _userManager.GetUserAsync(User);
             _unitOfWork.ProductRepository.Edit(product);
             _unitOfWork.Commit();
             return RedirectToPage("./List");

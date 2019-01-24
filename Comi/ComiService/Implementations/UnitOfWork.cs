@@ -19,10 +19,23 @@ namespace ComiService.Implementations
         private IRepository<Comment> _commentRepository;
         private IRepository<Payment> _paymentRepository;
         private IRepository<Package> _packageRepository;
+        private IRepository<FlashSale> _flashSaleRepository;
+        private IRepository<FlashSaleProduct> _flashSaleProductRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
+        }
+        public IRepository<FlashSaleProduct> FlashSaleProductRepository
+        {
+            get
+            {
+                if (_flashSaleProductRepository == null)
+                {
+                    _flashSaleProductRepository = new Repository<FlashSaleProduct>(_context);
+                }
+                return _flashSaleProductRepository;
+            }
         }
         public IRepository<Package> PackageRepository
         {
@@ -150,6 +163,18 @@ namespace ComiService.Implementations
                     _paymentRepository = new Repository<Payment>(_context);
                 }
                 return _paymentRepository;
+            }
+        }
+
+        public IRepository<FlashSale> FlashSaleRepository
+        {
+            get
+            {
+                if (_flashSaleRepository == null)
+                {
+                    _flashSaleRepository = new Repository<FlashSale>(_context);
+                }
+                return _flashSaleRepository;
             }
         }
 

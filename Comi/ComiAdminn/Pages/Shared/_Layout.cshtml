@@ -221,9 +221,7 @@
                 <!--  notification end -->
             </div>
             <div class="top-menu">
-                <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Logout</a></li>
-                </ul>
+                <partial name="_LoginPartial" />
             </div>
         </header>
         <aside>
@@ -241,41 +239,11 @@
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-desktop"></i>
-                            <span>Category management</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a asp-page="/Category/List">All categorys</a></li>
-                            <li><a asp-page="/Category/Create">New category</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-desktop"></i>
                             <span>Product management</span>
                         </a>
                         <ul class="sub">
                             <li><a asp-page="/Product/List">All products</a></li>
                             <li><a asp-page="/Product/Create">New product</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-desktop"></i>
-                            <span>Payment management</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a asp-page="/Payment/List">All payments</a></li>
-                            <li><a asp-page="/Payment/Create">New payment</a></li>
-                        </ul>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-desktop"></i>
-                            <span>Package management</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a asp-page="/Package/List">All packages</a></li>
-                            <li><a asp-page="/Package/Create">New package</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
@@ -288,7 +256,15 @@
                             <li><a asp-page="/FlashSale/Create">New flash sale</a></li>
                         </ul>
                     </li>
-                   
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-desktop"></i>
+                            <span>Sale order management</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a asp-page="/SaleOrder/List">All sale order</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <!-- sidebar menu end-->
             </div>

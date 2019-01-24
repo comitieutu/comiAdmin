@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.Configuration;
 
 namespace ComiAdminn.Pages.FlashSale
 {
@@ -23,13 +24,15 @@ namespace ComiAdminn.Pages.FlashSale
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment _hostingEnv;
         private readonly ApplicationDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public CreateModel(IUnitOfWork unitOfWork, IMapper mapper, IHostingEnvironment hostingEnv, ApplicationDbContext applicationDbContext)
+        public CreateModel(IUnitOfWork unitOfWork, IMapper mapper, IHostingEnvironment hostingEnv, ApplicationDbContext applicationDbContext, IConfiguration configuration)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _hostingEnv = hostingEnv;
             _context = applicationDbContext;
+            _configuration = configuration;
         }
         [BindProperty]
         public CreateFlashSale InputModel { get; set; }
@@ -50,7 +53,7 @@ namespace ComiAdminn.Pages.FlashSale
         }
         public void OnGet()
         {
-            var products = _context.Products.Include(p => p.Category).Where(p => p.Deleted == false).ToList();
+            var products = _context.Products.Include(p => p.Category).ToList();
             Products = new List<SelectListItem>();
             products.ForEach(p => Products.Add(new SelectListItem { Value = p.Id.ToString(), Text = $"{p.ProductName} ({p.Category.CategoryName})"}));
         }
@@ -62,7 +65,8 @@ namespace ComiAdminn.Pages.FlashSale
             }
             try
             {
-                var filePath = _hostingEnv.WebRootPath + "\\img";
+                //var filePath = _hostingEnv.WebRootPath + "\\img";
+                var filePath =  _configuration["Image"];
                 var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(File.FileName);
                 if (File.Length > 0)
                 {
@@ -75,6 +79,7 @@ namespace ComiAdminn.Pages.FlashSale
                 var entry = _context.Add(new ComiCore.Model.FlashSale());
                 entry.CurrentValues.SetValues(InputModel);
                 _context.SaveChanges();
+
                 InputModel.ProductId.ToList().ForEach(p => _context.FlashSaleProducts.Add(new ComiCore.Model.FlashSaleProduct { ProductId = p, FlashSaleId = entry.Entity.Id}));
                 _context.SaveChanges();
                 return RedirectToPage("./List");

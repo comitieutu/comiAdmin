@@ -31,7 +31,7 @@
                         <td>@f.Sale</td>
                         <td>@f.StartDate</td>
                         <td>@f.EndDate</td>
-                        <td><img src="~/img/@f.Image"/></td>
+                        <td><img src="~/img/@f.Image" width="200" height="200"/></td>
                         <td>
                             <a asp-page="/FlashSale/Edit" asp-route-id="@f.Id" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                             <a asp-page="/FlashSale/List" asp-route-id="@f.Id" asp-page-handler="Delete" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>

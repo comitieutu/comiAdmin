@@ -4,32 +4,40 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using ComiCore;
+using ComiService.Common;
 using ComiService.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Configuration;
 
 namespace ComiAdminn.Pages.Product
 {
-    public class CreateModel : PageModel
+    public class CreateModel : CategoryPageModel
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IHostingEnvironment _hostingEnv;
+        private readonly IConfiguration _configuration;
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public CreateModel(IUnitOfWork unitOfWork, IMapper mapper, IHostingEnvironment hostingEnv)
+        public CreateModel(IUnitOfWork unitOfWork, IMapper mapper, IHostingEnvironment hostingEnv, 
+            IConfiguration configuration, ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _hostingEnv = hostingEnv;
+            _configuration = configuration;
+            _context = context;
+            _userManager = userManager;
         }
         [BindProperty]
         public CreateProduct InputModel { get; set; }
         [BindProperty]
         public List<IFormFile> Files { get; set; }
-        public List<SelectListItem> Categories { get; set; }
         public class CreateProduct
         {
             public string ProductName { get; set; }
@@ -42,9 +50,8 @@ namespace ComiAdminn.Pages.Product
         }
         public void OnGet()
         {
-            var cates = _unitOfWork.CategoryRepository.GetAll().Where(c => c.Parent != 0 && c.Deleted == false).ToList();
-            Categories = new List<SelectListItem>();
-            cates.ForEach(c => Categories.Add(new SelectListItem { Value = c.Id.ToString(), Text = c.CategoryName }));
+            var cates = _unitOfWork.CategoryRepository.GetAll().Where(c => c.Parent != 0).ToList();
+            CategoryDropDownList(_context);
         }
         public async Task<IActionResult> OnPostAsync()
         {
@@ -56,13 +63,9 @@ namespace ComiAdminn.Pages.Product
             try
             {
                 var product = _mapper.Map<ComiCore.Model.Product>(InputModel);
-                _unitOfWork.ProductRepository.Create(product);
-                _unitOfWork.Commit();
+                var productDetails = new List<ComiCore.Model.ProductDetail>();
 
-                var productId = _unitOfWork.ProductRepository.GetByUId(product.UniqueId).Id;
-
-                var filePath = _hostingEnv.WebRootPath + "\\img";
-                var flag = false;
+                var filePath = _configuration["Image"];
                 foreach (var formFile in Files)
                 {
                     var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(formFile.FileName);
@@ -72,18 +75,13 @@ namespace ComiAdminn.Pages.Product
                         {
                             await formFile.CopyToAsync(stream);
                         }
-                        _unitOfWork.ProductDetailRepository.Create(new ComiCore.Model.ProductDetail { ProductId = productId, ProductImage = fileName });
-                        flag = true;
+                       productDetails.Add(new ComiCore.Model.ProductDetail { ProductImage = fileName });
                     }
                 }
-                if (flag)
-                {
-                    _unitOfWork.Commit();
-                }
-                else
-                {
-                    _unitOfWork.Refresh();
-                }
+                product.ProductDetails = productDetails;
+                product.User = await _userManager.GetUserAsync(User);
+                _context.Products.Add(product);
+                _context.SaveChanges();
                 return RedirectToPage("./List");
             }
             catch (Exception e)

@@ -8,8 +8,27 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComiService", "ComiService\ComiService.csproj", "{FBA28A31-F9A1-4C32-9569-A5054BBE045E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComiAdminn", "ComiAdminn\ComiAdminn.csproj", "{AC912573-837D-4E7A-B8C3-183CB9A71D4E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C19D7BCD-1E0E-4942-A8EE-50D6AC77C2CE} = {C19D7BCD-1E0E-4942-A8EE-50D6AC77C2CE}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComiWeb", "ComiWeb\ComiWeb.csproj", "{2BBDC6A5-4D67-4700-8A93-04E55CB2473B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComiWeb", "ComiWeb\ComiWeb.csproj", "{2BBDC6A5-4D67-4700-8A93-04E55CB2473B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{5920CB94-FC1B-49F6-A640-EAF9F8ED4AE0}"
+	ProjectSection(SolutionItems) = preProject
+		Countries.sql = Countries.sql
+		StaticData-US.sql = StaticData-US.sql
+		StaticData-VN.sql = StaticData-VN.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{389DDF44-6450-4593-B5A2-8990FBB6121B}"
+	ProjectSection(SolutionItems) = preProject
+		readme.txt = readme.txt
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComiSuperAdmin", "ComiSuperAdmin\ComiSuperAdmin.csproj", "{F6E9D4F2-5DB1-4AAD-BE15-105351EE0E66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComiRazorClassLib", "ComiRazorClassLib\ComiRazorClassLib.csproj", "{C19D7BCD-1E0E-4942-A8EE-50D6AC77C2CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +52,14 @@ Global
 		{2BBDC6A5-4D67-4700-8A93-04E55CB2473B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BBDC6A5-4D67-4700-8A93-04E55CB2473B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BBDC6A5-4D67-4700-8A93-04E55CB2473B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6E9D4F2-5DB1-4AAD-BE15-105351EE0E66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6E9D4F2-5DB1-4AAD-BE15-105351EE0E66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6E9D4F2-5DB1-4AAD-BE15-105351EE0E66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6E9D4F2-5DB1-4AAD-BE15-105351EE0E66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C19D7BCD-1E0E-4942-A8EE-50D6AC77C2CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C19D7BCD-1E0E-4942-A8EE-50D6AC77C2CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C19D7BCD-1E0E-4942-A8EE-50D6AC77C2CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C19D7BCD-1E0E-4942-A8EE-50D6AC77C2CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

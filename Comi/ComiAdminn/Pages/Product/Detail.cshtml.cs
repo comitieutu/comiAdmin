@@ -30,7 +30,7 @@ namespace ComiAdminn.Pages.Product
         }
         public void OnGet(int id)
         {
-            var details = _unitOfWork.ProductDetailRepository.GetAll().Where(p => p.ProductId == id && p.Deleted == false).ToList();
+            var details = _unitOfWork.ProductDetailRepository.GetAll().Where(p => p.ProductId == id).ToList();
             ProductDetails = _mapper.Map<IList<ProductDetailModel>>(details);
             ProductDetails.ToList().ForEach(p => p.Name = _unitOfWork.ProductRepository.Get(id).ProductName);
         }

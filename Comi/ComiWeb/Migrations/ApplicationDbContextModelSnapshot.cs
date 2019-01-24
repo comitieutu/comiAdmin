@@ -15,7 +15,7 @@ namespace ComiWeb.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
+                .HasAnnotation("ProductVersion", "2.2.0-rtm-35687")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -60,10 +60,6 @@ namespace ComiWeb.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("LastName");
-
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
@@ -98,6 +94,49 @@ namespace ComiWeb.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("ComiCore.ApplicationUserRole", b =>
+                {
+                    b.Property<string>("UserId");
+
+                    b.Property<string>("RoleId");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles");
+                });
+
+            modelBuilder.Entity("ComiCore.Model.Bank", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BankAccount");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<string>("Department");
+
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<Guid>("UniqueId");
+
+                    b.Property<int>("VendorId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VendorId")
+                        .IsUnique();
+
+                    b.ToTable("Bank");
                 });
 
             modelBuilder.Entity("ComiCore.Model.Category", b =>
@@ -168,11 +207,11 @@ namespace ComiWeb.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<int>("Duration");
+
                     b.Property<DateTime>("ModifiedDate");
 
-                    b.Property<int?>("PackageId");
-
-                    b.Property<DateTime>("StartDate");
+                    b.Property<int>("PackageId");
 
                     b.Property<string>("Status");
 
@@ -180,7 +219,9 @@ namespace ComiWeb.Migrations
 
                     b.Property<Guid>("UniqueId");
 
-                    b.Property<int?>("VendorId");
+                    b.Property<double>("UnitPrice");
+
+                    b.Property<int>("VendorId");
 
                     b.HasKey("Id");
 
@@ -189,6 +230,89 @@ namespace ComiWeb.Migrations
                     b.HasIndex("VendorId");
 
                     b.ToTable("Contracts");
+                });
+
+            modelBuilder.Entity("ComiCore.Model.Country", b =>
+                {
+                    b.Property<string>("Id");
+
+                    b.Property<string>("Code3");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<bool>("IsBillingEnabled");
+
+                    b.Property<bool>("IsCityEnabled");
+
+                    b.Property<bool>("IsDistrictEnabled");
+
+                    b.Property<bool>("IsShippingEnabled");
+
+                    b.Property<bool>("IsZipCodeEnabled");
+
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<Guid>("UniqueId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("ComiCore.Model.Delivery", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<string>("Description");
+
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<double>("Price");
+
+                    b.Property<Guid>("UniqueId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Deliveries");
+                });
+
+            modelBuilder.Entity("ComiCore.Model.District", b =>
+                {
+                    b.Property<int>("Id");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<string>("Location");
+
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("StateOrProvinceId");
+
+                    b.Property<string>("Type");
+
+                    b.Property<Guid>("UniqueId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StateOrProvinceId");
+
+                    b.ToTable("Districts");
                 });
 
             modelBuilder.Entity("ComiCore.Model.FlashSale", b =>
@@ -205,8 +329,6 @@ namespace ComiWeb.Migrations
 
                     b.Property<DateTime>("EndDate");
 
-                    b.Property<int?>("FlashSaleProductId");
-
                     b.Property<string>("Image");
 
                     b.Property<DateTime>("ModifiedDate");
@@ -220,8 +342,6 @@ namespace ComiWeb.Migrations
                     b.Property<Guid>("UniqueId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FlashSaleProductId");
 
                     b.ToTable("FlashSales");
                 });
@@ -245,6 +365,10 @@ namespace ComiWeb.Migrations
                     b.Property<Guid>("UniqueId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FlashSaleId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("FlashSaleProducts");
                 });
@@ -305,21 +429,19 @@ namespace ComiWeb.Migrations
 
                     b.Property<string>("Address");
 
+                    b.Property<string>("ApplicationUserId");
+
                     b.Property<DateTime>("Birthday");
-
-                    b.Property<string>("City");
-
-                    b.Property<string>("Country");
 
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<bool>("Deleted");
 
-                    b.Property<string>("District");
+                    b.Property<int>("DistrictId");
 
                     b.Property<string>("FirstName");
 
-                    b.Property<string>("Gender");
+                    b.Property<int>("Gender");
 
                     b.Property<string>("LastName");
 
@@ -333,7 +455,9 @@ namespace ComiWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("DistrictId");
 
                     b.ToTable("PersonInfos");
                 });
@@ -354,8 +478,6 @@ namespace ComiWeb.Migrations
 
                     b.Property<string>("DesDetail");
 
-                    b.Property<int?>("FlashSaleProductId");
-
                     b.Property<DateTime>("ModifiedDate");
 
                     b.Property<string>("ProductDes");
@@ -368,11 +490,13 @@ namespace ComiWeb.Migrations
 
                     b.Property<double>("UnitPrice");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("FlashSaleProductId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
                 });
@@ -412,23 +536,21 @@ namespace ComiWeb.Migrations
 
                     b.Property<bool>("Deleted");
 
+                    b.Property<int>("DistrictId");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
                     b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<string>("Phone");
 
                     b.Property<int>("SaleId");
 
-                    b.Property<int?>("SaleOrderId");
-
                     b.Property<string>("ShipToAddress");
-
-                    b.Property<string>("ShipToCity");
-
-                    b.Property<string>("ShipToCountry");
-
-                    b.Property<string>("ShipToDistrict");
-
-                    b.Property<string>("ShipToName");
-
-                    b.Property<string>("ShipToPhone");
 
                     b.Property<string>("ShipToStreet");
 
@@ -436,7 +558,10 @@ namespace ComiWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SaleOrderId");
+                    b.HasIndex("DistrictId");
+
+                    b.HasIndex("SaleId")
+                        .IsUnique();
 
                     b.ToTable("ReceiveProducts");
                 });
@@ -453,9 +578,17 @@ namespace ComiWeb.Migrations
 
                     b.Property<bool>("Deleted");
 
+                    b.Property<int>("DeliveryId");
+
+                    b.Property<double>("DeliveryPrice");
+
                     b.Property<DateTime>("ModifiedDate");
 
-                    b.Property<bool>("OrderStatus");
+                    b.Property<string>("OrderNumber")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasComputedColumnSql("isnull(N'SO'+CONVERT([nvarchar](23),[Id]),N'*** ERROR ***')");
+
+                    b.Property<int>("OrderStatus");
 
                     b.Property<int>("PaymentId");
 
@@ -472,6 +605,8 @@ namespace ComiWeb.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("DeliveryId");
 
                     b.HasIndex("PaymentId");
 
@@ -536,13 +671,38 @@ namespace ComiWeb.Migrations
                     b.ToTable("Shippers");
                 });
 
+            modelBuilder.Entity("ComiCore.Model.StateOrProvince", b =>
+                {
+                    b.Property<int>("Id");
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("CountryId");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<bool>("Deleted");
+
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Type");
+
+                    b.Property<Guid>("UniqueId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("StateOrProvinces");
+                });
+
             modelBuilder.Entity("ComiCore.Model.Vendor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address");
 
                     b.Property<DateTime>("CreatedDate");
 
@@ -560,7 +720,13 @@ namespace ComiWeb.Migrations
 
                     b.Property<Guid>("UniqueId");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Vendors");
                 });
@@ -577,9 +743,13 @@ namespace ComiWeb.Migrations
 
                     b.Property<bool>("Deleted");
 
+                    b.Property<int>("DistrictId");
+
                     b.Property<DateTime>("ModifiedDate");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("Street");
 
                     b.Property<Guid>("UniqueId");
 
@@ -587,7 +757,10 @@ namespace ComiWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VendorId");
+                    b.HasIndex("DistrictId");
+
+                    b.HasIndex("VendorId")
+                        .IsUnique();
 
                     b.ToTable("Warehouses");
                 });
@@ -652,19 +825,6 @@ namespace ComiWeb.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.Property<string>("UserId");
-
-                    b.Property<string>("RoleId");
-
-                    b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetUserRoles");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId");
@@ -682,6 +842,27 @@ namespace ComiWeb.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("ComiCore.ApplicationUserRole", b =>
+                {
+                    b.HasOne("ComiCore.ApplicationRole", "Role")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ComiCore.ApplicationUser", "User")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ComiCore.Model.Bank", b =>
+                {
+                    b.HasOne("ComiCore.Model.Vendor", "Vendor")
+                        .WithOne("Bank")
+                        .HasForeignKey("ComiCore.Model.Bank", "VendorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("ComiCore.Model.Comment", b =>
                 {
                     b.HasOne("ComiCore.ApplicationUser", "ApplicationUser")
@@ -697,26 +878,47 @@ namespace ComiWeb.Migrations
             modelBuilder.Entity("ComiCore.Model.Contract", b =>
                 {
                     b.HasOne("ComiCore.Model.Package", "Package")
-                        .WithMany()
-                        .HasForeignKey("PackageId");
+                        .WithMany("Contracts")
+                        .HasForeignKey("PackageId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ComiCore.Model.Vendor", "Vendor")
-                        .WithMany()
-                        .HasForeignKey("VendorId");
+                        .WithMany("Contracts")
+                        .HasForeignKey("VendorId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("ComiCore.Model.FlashSale", b =>
+            modelBuilder.Entity("ComiCore.Model.District", b =>
                 {
-                    b.HasOne("ComiCore.Model.FlashSaleProduct")
-                        .WithMany("FlashSales")
-                        .HasForeignKey("FlashSaleProductId");
+                    b.HasOne("ComiCore.Model.StateOrProvince", "StateOrProvince")
+                        .WithMany("Districts")
+                        .HasForeignKey("StateOrProvinceId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ComiCore.Model.FlashSaleProduct", b =>
+                {
+                    b.HasOne("ComiCore.Model.FlashSale", "FlashSale")
+                        .WithMany("FlashSaleProducts")
+                        .HasForeignKey("FlashSaleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ComiCore.Model.Product", "Product")
+                        .WithMany("FlashSaleProducts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ComiCore.Model.PersonInfo", b =>
                 {
-                    b.HasOne("ComiCore.ApplicationUser", "User")
+                    b.HasOne("ComiCore.ApplicationUser", "ApplicationUser")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("ComiCore.Model.District", "District")
+                        .WithMany()
+                        .HasForeignKey("DistrictId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ComiCore.Model.Product", b =>
@@ -726,9 +928,9 @@ namespace ComiWeb.Migrations
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ComiCore.Model.FlashSaleProduct")
+                    b.HasOne("ComiCore.ApplicationUser", "User")
                         .WithMany("Products")
-                        .HasForeignKey("FlashSaleProductId");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("ComiCore.Model.ProductDetail", b =>
@@ -741,9 +943,15 @@ namespace ComiWeb.Migrations
 
             modelBuilder.Entity("ComiCore.Model.ReceiveProduct", b =>
                 {
+                    b.HasOne("ComiCore.Model.District", "District")
+                        .WithMany("ReceiveProducts")
+                        .HasForeignKey("DistrictId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("ComiCore.Model.SaleOrder", "SaleOrder")
-                        .WithMany()
-                        .HasForeignKey("SaleOrderId");
+                        .WithOne("ReceiveProduct")
+                        .HasForeignKey("ComiCore.Model.ReceiveProduct", "SaleId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ComiCore.Model.SaleOrder", b =>
@@ -752,8 +960,13 @@ namespace ComiWeb.Migrations
                         .WithMany("SaleOrders")
                         .HasForeignKey("ApplicationUserId");
 
+                    b.HasOne("ComiCore.Model.Delivery", "Delivery")
+                        .WithMany("SaleOrders")
+                        .HasForeignKey("DeliveryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("ComiCore.Model.Payment", "Payment")
-                        .WithMany()
+                        .WithMany("SaleOrders")
                         .HasForeignKey("PaymentId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -771,11 +984,30 @@ namespace ComiWeb.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("ComiCore.Model.StateOrProvince", b =>
+                {
+                    b.HasOne("ComiCore.Model.Country", "Country")
+                        .WithMany("StateOrProvinces")
+                        .HasForeignKey("CountryId");
+                });
+
+            modelBuilder.Entity("ComiCore.Model.Vendor", b =>
+                {
+                    b.HasOne("ComiCore.ApplicationUser", "User")
+                        .WithOne("Vendor")
+                        .HasForeignKey("ComiCore.Model.Vendor", "UserId");
+                });
+
             modelBuilder.Entity("ComiCore.Model.Warehouse", b =>
                 {
-                    b.HasOne("ComiCore.Model.Vendor", "Vendor")
+                    b.HasOne("ComiCore.Model.District", "District")
                         .WithMany("Warehouses")
-                        .HasForeignKey("VendorId")
+                        .HasForeignKey("DistrictId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ComiCore.Model.Vendor", "Vendor")
+                        .WithOne("Warehouse")
+                        .HasForeignKey("ComiCore.Model.Warehouse", "VendorId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -797,19 +1029,6 @@ namespace ComiWeb.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("ComiCore.ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.HasOne("ComiCore.ApplicationRole")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("ComiCore.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")

@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using ComiCore;
+using ComiService.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace ComiAdminn.Pages.FlashSale
 {
     public class ListModel : PageModel
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public ListModel(ApplicationDbContext context)
+        public ListModel(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _context = context;
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
         public IList<FlashSaleModel> FlashSaleModels { get; set; }
         public class FlashSaleModel
@@ -29,11 +34,14 @@ namespace ComiAdminn.Pages.FlashSale
         }
         public void OnGet()
         {
-            //var entry = _context.Add();
-            //entry.CurrentValues.SetValues(FlashSaleModels);
+            var flashSales = _unitOfWork.FlashSaleRepository.GetAll().ToList();
+            FlashSaleModels = _mapper.Map<List<FlashSaleModel>>(flashSales);
         }
-        //public IActionResult OnGetDelete(int id)
-        //{
-        //}
+        public IActionResult OnGetDelete(int? id)
+        {
+            _unitOfWork.FlashSaleRepository.Delete(id);
+            _unitOfWork.Commit();
+            return RedirectToPage("./List");
+        }
     }
 }

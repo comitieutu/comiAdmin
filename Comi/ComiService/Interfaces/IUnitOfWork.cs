@@ -15,6 +15,8 @@ namespace ComiService.Interfaces
         IRepository<Comment> CommentRepository { get; }
         IRepository<Payment> PaymentRepository { get; }
         IRepository<Package> PackageRepository { get; }
+        IRepository<FlashSale> FlashSaleRepository { get; }
+        IRepository<FlashSaleProduct> FlashSaleProductRepository { get; }
         void Refresh();
         void Commit();
     }
